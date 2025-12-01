@@ -1,0 +1,146 @@
+==========================================
+CIFAKE CLIP Fine-tuning Job
+==========================================
+Job ID: 288813
+Node: p202
+Start time: Mon Nov 24 04:16:31 PM CET 2025
+==========================================
+Python version:
+Python 3.11.5
+
+PyTorch version:
+PyTorch: 2.9.1+cu128
+CUDA available: True
+CUDA version: 12.8
+
+==========================================
+Starting fine-tuning...
+==========================================
+Using device: cuda
+Loading CLIP model...
+Model parameters: 769
+
+Loading datasets...
+Train samples: 100000
+Test samples: 20000
+
+============================================================
+Epoch 1/10
+============================================================
+
+Train Loss: 0.6137
+Test Accuracy: 0.8487
+Test AUC: 0.9225
+✓ Saved best model (AUC: 0.9225)
+
+============================================================
+Epoch 2/10
+============================================================
+
+Train Loss: 0.5049
+Test Accuracy: 0.8609
+Test AUC: 0.9343
+✓ Saved best model (AUC: 0.9343)
+
+============================================================
+Epoch 3/10
+============================================================
+
+Train Loss: 0.4396
+Test Accuracy: 0.8717
+Test AUC: 0.9429
+✓ Saved best model (AUC: 0.9429)
+
+============================================================
+Epoch 4/10
+============================================================
+
+Train Loss: 0.3956
+Test Accuracy: 0.8798
+Test AUC: 0.9491
+✓ Saved best model (AUC: 0.9491)
+
+============================================================
+Epoch 5/10
+============================================================
+
+Train Loss: 0.3635
+Test Accuracy: 0.8855
+Test AUC: 0.9539
+✓ Saved best model (AUC: 0.9539)
+
+============================================================
+Epoch 6/10
+============================================================
+
+Train Loss: 0.3388
+Test Accuracy: 0.8923
+Test AUC: 0.9577
+✓ Saved best model (AUC: 0.9577)
+
+============================================================
+Epoch 7/10
+============================================================
+
+Train Loss: 0.3190
+Test Accuracy: 0.8956
+Test AUC: 0.9607
+✓ Saved best model (AUC: 0.9607)
+
+============================================================
+Epoch 8/10
+============================================================
+
+Train Loss: 0.3027
+Test Accuracy: 0.8999
+Test AUC: 0.9631
+✓ Saved best model (AUC: 0.9631)
+
+============================================================
+Epoch 9/10
+============================================================
+
+Train Loss: 0.2891
+Test Accuracy: 0.9032
+Test AUC: 0.9652
+✓ Saved best model (AUC: 0.9652)
+
+============================================================
+Epoch 10/10
+============================================================
+
+Train Loss: 0.2776
+Test Accuracy: 0.9063
+Test AUC: 0.9669
+✓ Saved best model (AUC: 0.9669)
+
+============================================================
+Final Evaluation (Best Model)
+============================================================
+
+Best Test Accuracy: 0.9063
+Best Test AUC: 0.9669
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        Real       0.90      0.91      0.91     10000
+        Fake       0.91      0.90      0.91     10000
+
+    accuracy                           0.91     20000
+   macro avg       0.91      0.91      0.91     20000
+weighted avg       0.91      0.91      0.91     20000
+
+
+✓ Saved training results to training_results.csv
+
+==========================================
+Job completed!
+End time: Mon Nov 24 07:07:14 PM CET 2025
+==========================================
+Generated files:
+-rw-rw-r-- 1 junming junming 5.2K Nov 24 19:04 best_cifake_clip_classifier.pt
+-rw-rw-r-- 1 junming junming 1.3M Nov 24 10:59 cifake_test.csv
+-rw-rw-r-- 1 junming junming 6.4M Nov 24 10:59 cifake_train.csv
+-rw-rw-r-- 1 junming junming  500 Nov 24 19:07 training_results.csv
+-rw-rw-r-- 1 junming junming 130K Nov 24 13:19 zero_shot_clip_comparison.png

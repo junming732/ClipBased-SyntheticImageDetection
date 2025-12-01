@@ -1,0 +1,259 @@
+================================================================================
+MISCLASSIFIED IMAGES
+================================================================================
+
+Total misclassifications: 82 / 17502
+Accuracy: 0.9953
+
+--------------------------------------------------------------------------------
+FALSE POSITIVES: 33 (Real images predicted as Fake)
+--------------------------------------------------------------------------------
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/flickr_cat_000253.jpg
+Confidence: 0.5115
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/flickr_cat_000152.jpg
+Confidence: 0.5242
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_001029.jpg
+Confidence: 0.7459
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/flickr_cat_000191.jpg
+Confidence: 0.6285
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/flickr_cat_000637.jpg
+Confidence: 0.5799
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_000392.jpg
+Confidence: 0.6996
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_002464.jpg
+Confidence: 0.5800
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_002241.jpg
+Confidence: 0.6008
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_002398.jpg
+Confidence: 0.6273
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_001672.jpg
+Confidence: 0.5098
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/cat/pixabay_cat_004019.jpg
+Confidence: 0.5224
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_000550.jpg
+Confidence: 0.5572
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_001985.jpg
+Confidence: 0.6236
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_000357.jpg
+Confidence: 0.5191
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/flickr_dog_001021.jpg
+Confidence: 0.5633
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_003672.jpg
+Confidence: 0.7165
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_002766.jpg
+Confidence: 0.5113
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/flickr_dog_000572.jpg
+Confidence: 0.5590
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_000140.jpg
+Confidence: 0.5886
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_001497.jpg
+Confidence: 0.5326
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/dog/pixabay_dog_002492.jpg
+Confidence: 0.5905
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_000053.jpg
+Confidence: 0.5096
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_001508.jpg
+Confidence: 0.5166
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_002336.jpg
+Confidence: 0.5602
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/pixabay_wild_000535.jpg
+Confidence: 0.5742
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_000149.jpg
+Confidence: 0.5518
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_000064.jpg
+Confidence: 0.5110
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_001457.jpg
+Confidence: 0.5586
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/pixabay_wild_000420.jpg
+Confidence: 0.8077
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_001862.jpg
+Confidence: 0.5184
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_003380.jpg
+Confidence: 0.5224
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/flickr_wild_003246.jpg
+Confidence: 0.5187
+
+Path: /home/junming/nobackup_junming/stargan-v2/data/afhq/val/wild/pixabay_wild_000393.jpg
+Confidence: 0.5328
+
+--------------------------------------------------------------------------------
+FALSE NEGATIVES: 49 (Fake images predicted as Real)
+--------------------------------------------------------------------------------
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed13394.png
+Confidence: 0.7490
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed12855.png
+Confidence: 0.5221
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed16148.png
+Confidence: 0.5595
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed10485.png
+Confidence: 0.6473
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed16801.png
+Confidence: 0.7806
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed11665.png
+Confidence: 0.5250
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed10299.png
+Confidence: 0.5460
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed17086.png
+Confidence: 0.5689
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed11638.png
+Confidence: 0.5593
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed14425.png
+Confidence: 0.5196
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed14991.png
+Confidence: 0.7613
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed17689.png
+Confidence: 0.5820
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-t-afhqv2-512x512/seed16644.png
+Confidence: 0.5546
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed14015.png
+Confidence: 0.5993
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed10386.png
+Confidence: 0.5378
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed11286.png
+Confidence: 0.6575
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed14666.png
+Confidence: 0.6461
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed16420.png
+Confidence: 0.6094
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17853.png
+Confidence: 0.5163
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed11929.png
+Confidence: 0.8865
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15364.png
+Confidence: 0.5053
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed16693.png
+Confidence: 0.6724
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed10174.png
+Confidence: 0.5276
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed10350.png
+Confidence: 0.5410
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed13410.png
+Confidence: 0.5232
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed12932.png
+Confidence: 0.6485
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17183.png
+Confidence: 0.5265
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed11651.png
+Confidence: 0.7578
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17427.png
+Confidence: 0.6675
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15180.png
+Confidence: 0.6028
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17012.png
+Confidence: 0.5335
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed12423.png
+Confidence: 0.6069
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15772.png
+Confidence: 0.5170
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17971.png
+Confidence: 0.6300
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17533.png
+Confidence: 0.6544
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17261.png
+Confidence: 0.5315
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15209.png
+Confidence: 0.5416
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed11469.png
+Confidence: 0.6699
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed17465.png
+Confidence: 0.5016
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed14631.png
+Confidence: 0.6140
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed10337.png
+Confidence: 0.5056
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15103.png
+Confidence: 0.5019
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15566.png
+Confidence: 0.5601
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed12319.png
+Confidence: 0.5705
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15382.png
+Confidence: 0.5538
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15456.png
+Confidence: 0.5916
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed12457.png
+Confidence: 0.5186
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed15030.png
+Confidence: 0.7043
+
+Path: /home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K/stylegan3-r-afhqv2-512x512/seed12107.png
+Confidence: 0.5330
+

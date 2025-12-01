@@ -1,0 +1,113 @@
+==========================================
+AFHQ Baseline Experiments
+==========================================
+
+1. Running Zero-Shot CLIP evaluation...
+------------------------------------------
+Using device: cuda
+Loading CLIP model...
+
+Text prompts:
+  [0] a real photograph
+  [1] an AI-generated synthetic image
+Loaded 1500 real images
+Loaded 16002 fake images
+Total: 17502 images for val
+
+Evaluating on 17502 validation images...
+
+============================================================
+ZERO-SHOT CLIP RESULTS
+============================================================
+Accuracy: 0.6063 (60.63%)
+AUC: 0.5927
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        Real       0.11      0.49      0.18      1500
+        Fake       0.93      0.62      0.74     16002
+
+    accuracy                           0.61     17502
+   macro avg       0.52      0.55      0.46     17502
+weighted avg       0.86      0.61      0.69     17502
+
+
+✓ Saved results to zero_shot_results.json
+
+2. Training ResNet50 baseline...
+------------------------------------------
+Using device: cuda
+
+Loading datasets...
+Loaded 12623 real images
+Loaded 16002 fake images
+Total: 28625 images for train
+Loaded 1500 real images
+Loaded 16002 fake images
+Total: 17502 images for val
+
+Creating ResNet50 model...
+Downloading: "https://download.pytorch.org/models/resnet50-0676ba61.pth" to /home/junming/.cache/torch/hub/checkpoints/resnet50-0676ba61.pth
+
+============================================================
+Starting ResNet50 training...
+============================================================
+
+Epoch 1/10
+Train Loss: 0.0903, Train Acc: 0.9625
+Val Loss: 0.1006, Val Acc: 0.9641, Val AUC: 0.9993
+✓ Saved new best model (acc=0.9641)
+
+Epoch 2/10
+Train Loss: 0.0062, Train Acc: 0.9980
+Val Loss: 0.0006, Val Acc: 0.9999, Val AUC: 1.0000
+✓ Saved new best model (acc=0.9999)
+
+Epoch 3/10
+Train Loss: 0.0031, Train Acc: 0.9990
+Val Loss: 0.0002, Val Acc: 1.0000, Val AUC: 1.0000
+✓ Saved new best model (acc=1.0000)
+
+Epoch 4/10
+Train Loss: 0.0019, Train Acc: 0.9994
+Val Loss: 0.0002, Val Acc: 1.0000, Val AUC: 1.0000
+
+Epoch 5/10
+Train Loss: 0.0017, Train Acc: 0.9995
+Val Loss: 0.0001, Val Acc: 1.0000, Val AUC: 1.0000
+
+Epoch 6/10
+Train Loss: 0.0013, Train Acc: 0.9996
+Val Loss: 0.0000, Val Acc: 1.0000, Val AUC: 1.0000
+
+Epoch 7/10
+Train Loss: 0.0008, Train Acc: 0.9997
+Val Loss: 0.0220, Val Acc: 0.9914, Val AUC: 1.0000
+
+Epoch 8/10
+Train Loss: 0.0033, Train Acc: 0.9989
+Val Loss: 0.0079, Val Acc: 0.9972, Val AUC: 1.0000
+
+Epoch 9/10
+Train Loss: 0.0015, Train Acc: 0.9995
+Val Loss: 0.0018, Val Acc: 0.9997, Val AUC: 0.9999
+
+Epoch 10/10
+Train Loss: 0.0011, Train Acc: 0.9997
+Val Loss: 0.0002, Val Acc: 0.9999, Val AUC: 1.0000
+
+✓ Saved training results to resnet_training_results.csv
+
+============================================================
+Training completed! Best validation accuracy: 1.0000
+============================================================
+
+==========================================
+Baseline Experiments Complete!
+==========================================
+
+Results:
+  - zero_shot_results.json
+  - best_resnet_afhq.pth
+  - resnet_training_results.csv

@@ -1,0 +1,69 @@
+Using device: cuda
+Loading CLIP model...
+
+Creating datasets...
+Loaded 12623 real images
+Loaded 16002 fake images
+Total: 28625 images for train
+Loaded 1500 real images
+Loaded 16002 fake images
+Total: 17502 images for val
+
+============================================================
+Starting training...
+============================================================
+
+Epoch 1/10
+Train Loss: 0.6260, Train Acc: 0.6401
+Val Loss: 0.5002, Val Acc: 0.9559, Val AUC: 0.9903
+✓ Saved new best model (acc=0.9559)
+
+Epoch 2/10
+Train Loss: 0.5285, Train Acc: 0.8550
+Val Loss: 0.4263, Val Acc: 0.9774, Val AUC: 0.9956
+✓ Saved new best model (acc=0.9774)
+
+Epoch 3/10
+Train Loss: 0.4530, Train Acc: 0.9223
+Val Loss: 0.3652, Val Acc: 0.9856, Val AUC: 0.9975
+✓ Saved new best model (acc=0.9856)
+
+Epoch 4/10
+Train Loss: 0.3933, Train Acc: 0.9497
+Val Loss: 0.3240, Val Acc: 0.9899, Val AUC: 0.9983
+✓ Saved new best model (acc=0.9899)
+
+Epoch 5/10
+Train Loss: 0.3456, Train Acc: 0.9652
+Val Loss: 0.2859, Val Acc: 0.9919, Val AUC: 0.9987
+✓ Saved new best model (acc=0.9919)
+
+Epoch 6/10
+Train Loss: 0.3066, Train Acc: 0.9735
+Val Loss: 0.2539, Val Acc: 0.9931, Val AUC: 0.9989
+✓ Saved new best model (acc=0.9931)
+
+Epoch 7/10
+Train Loss: 0.2744, Train Acc: 0.9777
+Val Loss: 0.2310, Val Acc: 0.9939, Val AUC: 0.9991
+✓ Saved new best model (acc=0.9939)
+
+Epoch 8/10
+Train Loss: 0.2473, Train Acc: 0.9820
+Val Loss: 0.2058, Val Acc: 0.9943, Val AUC: 0.9992
+✓ Saved new best model (acc=0.9943)
+
+Epoch 9/10
+Train Loss: 0.2242, Train Acc: 0.9841
+Val Loss: 0.1885, Val Acc: 0.9949, Val AUC: 0.9993
+✓ Saved new best model (acc=0.9949)
+
+Epoch 10/10
+Train Loss: 0.2044, Train Acc: 0.9856
+Val Loss: 0.1719, Val Acc: 0.9953, Val AUC: 0.9993
+✓ Saved new best model (acc=0.9953)
+
+============================================================
+Training completed! Best validation accuracy: 0.9953
+============================================================
+Training completed!

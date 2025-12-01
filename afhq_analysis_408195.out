@@ -1,0 +1,111 @@
+==========================================
+Starting AFHQ Analysis
+==========================================
+
+1. Running overall performance analysis...
+------------------------------------------
+============================================================
+Generating AFHQ Analysis Plots
+============================================================
+
+1. Plotting training curves...
+✓ Saved afhq_training_curves.png
+
+2. Visualizing feature space...
+Using device: cuda
+Loading CLIP model...
+Loaded 1500 real images
+Loaded 16002 fake images
+Total: 17502 images for val
+Loaded 17502 validation images
+Extracting CLIP features...
+Extracted 17502 features
+Running t-SNE on 3000 samples...
+   Error: TSNE.__init__() got an unexpected keyword argument 'n_iter'
+
+3. Comparing models...
+✓ Saved afhq_model_comparison.png
+✓ Saved results to model_comparison_results.csv
+
+4. Analyzing per-class performance...
+Loading CLIP model...
+Loaded model from best_afhq_clip_classifier.pth
+Cat: 97.80% (489/500)
+Dog: 98.00% (490/500)
+Wild: 97.60% (488/500)
+✓ Saved afhq_per_class_performance.png
+
+============================================================
+Analysis Complete!
+============================================================
+
+2. Running misclassification visualization...
+------------------------------------------
+============================================================
+Visualizing Misclassifications
+============================================================
+
+1. Finding and visualizing misclassified images...
+Using device: cuda
+Loading CLIP model...
+Loaded model from best_afhq_clip_classifier.pth
+Loaded 1500 real images
+Loaded 16002 fake images
+Total: 17502 images for val
+
+Analyzing 17502 validation images...
+
+Found 82 misclassifications out of 17502 images
+Accuracy: 0.9953
+
+False Positives (Real → Predicted Fake): 33
+False Negatives (Fake → Predicted Real): 49
+✓ Saved detailed list to misclassified_images.txt
+✓ Saved false_positives.png
+✓ Saved false_negatives.png
+
+2. Analyzing confidence distribution...
+Loading model...
+Loaded 1500 real images
+Loaded 16002 fake images
+Total: 17502 images for val
+Computing predictions...
+✓ Saved confidence_distribution.png
+
+============================================================
+CONFIDENCE STATISTICS
+============================================================
+
+Real Images (should be < 0.5):
+  Mean: 0.1933
+  Median: 0.1714
+  Min: 0.0146
+  Max: 0.8077
+
+Fake Images (should be > 0.5):
+  Mean: 0.8508
+  Median: 0.8670
+  Min: 0.1135
+  Max: 0.9835
+
+============================================================
+Visualization Complete!
+============================================================
+
+==========================================
+Analysis Complete!
+==========================================
+
+Generated files:
+-rw-rw-r-- 1 junming junming 127K Dec  1 12:55 afhq_model_comparison.png
+-rw-rw-r-- 1 junming junming 118K Dec  1 12:55 afhq_per_class_performance.png
+-rw-rw-r-- 1 junming junming 154K Dec  1 12:51 afhq_training_curves.png
+-rw-rw-r-- 1 junming junming 1.3M Nov 24 10:59 cifake_test.csv
+-rw-rw-r-- 1 junming junming 6.4M Nov 24 10:59 cifake_train.csv
+-rw-rw-r-- 1 junming junming 213K Dec  1 13:02 confidence_distribution.png
+-rw-rw-r-- 1 junming junming  19M Dec  1 12:59 false_negatives.png
+-rw-rw-r-- 1 junming junming  13M Dec  1 12:59 false_positives.png
+-rw-rw-r-- 1 junming junming  12K Dec  1 12:59 misclassified_images.txt
+-rw-rw-r-- 1 junming junming  146 Dec  1 12:55 model_comparison_results.csv
+-rw-rw-r-- 1 junming junming  500 Nov 24 19:07 training_results.csv
+-rw-rw-r-- 1 junming junming 130K Nov 24 13:19 zero_shot_clip_comparison.png

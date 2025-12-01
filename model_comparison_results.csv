@@ -1,0 +1,7 @@
+Model,AUC,Accuracy
+"Zero-Shot CLIP
+(text prompts)",0.5,0.5
+"Pre-trained Detector
+(high-res trained)",0.52,0.51
+"Fine-tuned CLIP
+(AFHQ)",0.95,0.93
