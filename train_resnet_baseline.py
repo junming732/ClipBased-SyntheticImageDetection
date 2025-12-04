@@ -1,38 +1,96 @@
 #!/usr/bin/env python3
 """
-ResNet50 Baseline for AFHQ Real vs Fake Detection
-Standard CNN baseline for comparison
+CORRECTED: Train ResNet50 baseline for AFHQ fake detection with PROPER train/val split
 """
+
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
-from torchvision import models, transforms
-from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
-import numpy as np
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms, models
+from PIL import Image
+from pathlib import Path
 from tqdm import tqdm
-import pandas as pd
+from sklearn.metrics import accuracy_score, roc_auc_score
+import csv
 
-class ResNetClassifier(nn.Module):
-    """ResNet50 binary classifier"""
-    def __init__(self, pretrained=True):
-        super().__init__()
-        self.resnet = models.resnet50(pretrained=pretrained)
-        # Replace final layer
-        num_features = self.resnet.fc.in_features
-        self.resnet.fc = nn.Linear(num_features, 1)
+class AFHQDataset(Dataset):
+    """
+    CORRECTED + ROBUST: Loads AFHQ with proper train/val split and skips corrupted images
+    """
+    def __init__(self, real_root, fake_root, split='train', transform=None):
+        self.samples = []
+        self.transform = transform
 
-    def forward(self, x):
-        return self.resnet(x)
+        # Real images from AFHQv2
+        real_path = Path(real_root) / split
+        print(f"Loading real images from: {real_path}")
+        real_count = 0
+        for animal_type in ['cat', 'dog', 'wild']:
+            animal_dir = real_path / animal_type
+            if animal_dir.exists():
+                for img_file in animal_dir.glob('*.jpg'):
+                    if self._verify_image(img_file):
+                        self.samples.append((str(img_file), 0))
+                        real_count += 1
+
+        print(f"Loaded {real_count} real images")
+
+        # Fake images from StyleGAN3
+        fake_path = Path(fake_root)
+        print(f"Loading fake images from: {fake_path}")
+        fake_count = 0
+        corrupted_count = 0
+
+        for stylegan_dir in fake_path.iterdir():
+            if stylegan_dir.is_dir() and 'afhqv2' in stylegan_dir.name:
+                print(f"  Loading from: {stylegan_dir.name}")
+                for img_file in stylegan_dir.glob('*.png'):
+                    if self._verify_image(img_file):
+                        self.samples.append((str(img_file), 1))
+                        fake_count += 1
+                    else:
+                        corrupted_count += 1
+
+        if corrupted_count > 0:
+            print(f"⚠️  Skipped {corrupted_count} corrupted fake images")
+
+        print(f"Loaded {fake_count} fake images")
+        print(f"Total: {len(self.samples)} images for {split}")
+
+    def _verify_image(self, img_path):
+        """Verify that an image can be opened"""
+        try:
+            img = Image.open(img_path)
+            img.verify()
+            return True
+        except:
+            return False
+
+    def __len__(self):
+        return len(self.samples)
+
+    def __getitem__(self, idx):
+        img_path, label = self.samples[idx]
+
+        # Robust image loading with retry
+        try:
+            image = Image.open(img_path).convert('RGB')
+        except Exception as e:
+            print(f"⚠️  Failed to load {img_path}: {e}")
+            image = Image.new('RGB', (512, 512), color='black')
+
+        if self.transform:
+            image = self.transform(image)
+        return image, label
 
 def train_epoch(model, loader, criterion, optimizer, device):
-    """Train for one epoch"""
     model.train()
     total_loss = 0
-    all_preds = []
-    all_labels = []
+    all_preds, all_labels = [], []
 
     for images, labels in tqdm(loader, desc="Training"):
-        images, labels = images.to(device), labels.float().to(device)
+        images = images.to(device, non_blocking=True)
+        labels = labels.float().to(device, non_blocking=True)
 
         optimizer.zero_grad()
         outputs = model(images).squeeze()
@@ -42,89 +100,88 @@ def train_epoch(model, loader, criterion, optimizer, device):
 
         total_loss += loss.item()
 
-        preds = torch.sigmoid(outputs) > 0.5
+        probs = torch.sigmoid(outputs)
+        preds = (probs > 0.5).float()
         all_preds.extend(preds.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
 
     avg_loss = total_loss / len(loader)
-    acc = accuracy_score(all_labels, all_preds)
-    return avg_loss, acc
+    accuracy = accuracy_score(all_labels, all_preds)
+
+    return avg_loss, accuracy
 
 def evaluate(model, loader, criterion, device):
-    """Evaluate model"""
     model.eval()
     total_loss = 0
-    all_preds = []
-    all_labels = []
-    all_probs = []
+    all_preds, all_labels, all_probs = [], [], []
 
     with torch.no_grad():
         for images, labels in tqdm(loader, desc="Evaluating"):
-            images, labels = images.to(device), labels.float().to(device)
+            images = images.to(device, non_blocking=True)
+            labels = labels.float().to(device, non_blocking=True)
 
             outputs = model(images).squeeze()
             loss = criterion(outputs, labels)
             total_loss += loss.item()
 
             probs = torch.sigmoid(outputs)
-            preds = probs > 0.5
-
             all_probs.extend(probs.cpu().numpy())
-            all_preds.extend(preds.cpu().numpy())
+            all_preds.extend((probs > 0.5).cpu().numpy())
             all_labels.extend(labels.cpu().numpy())
 
     avg_loss = total_loss / len(loader)
-    acc = accuracy_score(all_labels, all_preds)
+    accuracy = accuracy_score(all_labels, all_preds)
     auc = roc_auc_score(all_labels, all_probs)
 
-    return avg_loss, acc, auc
+    return avg_loss, accuracy, auc
 
 def main():
-    # Configuration
-    BATCH_SIZE = 64  # Smaller batch for ResNet50
-    LEARNING_RATE = 0.0001
+    # CORRECTED PATHS
+    REAL_ROOT = '/crex/proj/uppmax2025-2-346/nobackup/private/junming/stargan-v2/data/afhq'
+    TRAIN_FAKE_ROOT = '/crex/proj/uppmax2025-2-346/nobackup/private/junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K'
+    VAL_FAKE_ROOT = '/crex/proj/uppmax2025-2-346/nobackup/private/junming/FakeImageDataset/ImageData/val/stylegan3-60K/stylegan3-60K'
+
+    # Training configuration
+    BATCH_SIZE = 128
+    LEARNING_RATE = 1e-3
     NUM_EPOCHS = 10
+    NUM_WORKERS = 4
+
     DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-    # Paths
-    REAL_ROOT = '/home/junming/nobackup_junming/stargan-v2/data/afhq'
-    FAKE_ROOT = '/home/junming/nobackup_junming/FakeImageDataset/ImageData/train/stylegan3-80K/stylegan3-80K'
-
     print(f"Using device: {DEVICE}")
 
-    # ResNet preprocessing
+    # Data transforms (ResNet uses 224x224, but we can try native 512x512)
     transform = transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
+        transforms.Resize((512, 512)),  # Keep high resolution
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                            std=[0.229, 0.224, 0.225])
     ])
 
-    # Load datasets
     print("\nLoading datasets...")
-    from train_afhq_clip import AFHQDataset
-    train_dataset = AFHQDataset(REAL_ROOT, FAKE_ROOT, split='train', transform=transform)
-    val_dataset = AFHQDataset(REAL_ROOT, FAKE_ROOT, split='val', transform=transform)
+    train_dataset = AFHQDataset(REAL_ROOT, TRAIN_FAKE_ROOT, split='train', transform=transform)
+    val_dataset = AFHQDataset(REAL_ROOT, VAL_FAKE_ROOT, split='val', transform=transform)
 
     train_loader = DataLoader(
         train_dataset,
         batch_size=BATCH_SIZE,
         shuffle=True,
-        num_workers=4,
+        num_workers=NUM_WORKERS,
         pin_memory=True
     )
     val_loader = DataLoader(
         val_dataset,
         batch_size=BATCH_SIZE,
         shuffle=False,
-        num_workers=4,
+        num_workers=NUM_WORKERS,
         pin_memory=True
     )
 
-    # Create model
+    # Create ResNet50 model
     print("\nCreating ResNet50 model...")
-    model = ResNetClassifier(pretrained=True).to(DEVICE)
+    model = models.resnet50(pretrained=True)
+    model.fc = nn.Linear(model.fc.in_features, 1)  # Binary classification
+    model = model.to(DEVICE)
 
     # Training setup
     criterion = nn.BCEWithLogitsLoss()
@@ -159,8 +216,8 @@ def main():
             'epoch': epoch + 1,
             'train_loss': train_loss,
             'train_acc': train_acc,
-            'test_acc': val_acc,
-            'test_auc': val_auc
+            'val_acc': val_acc,
+            'val_auc': val_auc
         })
 
         # Save best model
@@ -172,13 +229,16 @@ def main():
                 'optimizer_state_dict': optimizer.state_dict(),
                 'val_acc': val_acc,
                 'val_auc': val_auc,
-            }, 'best_resnet_afhq.pth')
+            }, 'best_resnet_afhq_CORRECTED.pth')
             print(f"✓ Saved new best model (acc={val_acc:.4f})")
 
     # Save training results
-    results_df = pd.DataFrame(results)
-    results_df.to_csv('resnet_training_results.csv', index=False)
-    print("\n✓ Saved training results to resnet_training_results.csv")
+    with open('resnet_training_results_CORRECTED.csv', 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=['epoch', 'train_loss', 'train_acc', 'val_acc', 'val_auc'])
+        writer.writeheader()
+        writer.writerows(results)
+
+    print("\n✓ Saved training results to resnet_training_results_CORRECTED.csv")
 
     print("\n" + "="*60)
     print(f"Training completed! Best validation accuracy: {best_val_acc:.4f}")
